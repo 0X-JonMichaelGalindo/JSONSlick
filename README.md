@@ -22,7 +22,7 @@ await JSONSlick( json_string, [ tab_string, [ codesLineLength_int ] ] )
 - json_string: `string` - JSON text to format.
 - tab_string: `string` - Optional. Formatting whitespace. Default " ".
 - codesLineLength_int: `int` - Optional. Must be greater than 0.  
-	Arrays of numbers split into rows of this many elements.
+    Arrays of numbers split into rows of this many elements.
 
 See [parameters](#usage) for details and examples.
 
@@ -49,14 +49,14 @@ The only validation JSONSlick performs is the type-enforcement of its [parameter
 # Index
 
 - [Usage](#usage)
-	- [With Async Await (No Errors)](#with-async-await-no-errors)
-	- [With Async Await (Errors)](#with-async-await-errors)
-	- [With Modules](#with-modules)
-	- [With Promise Chaining](#with-promise-chaining)
+    - [With Async Await (No Errors)](#with-async-await-no-errors)
+    - [With Async Await (Errors)](#with-async-await-errors)
+    - [With Modules](#with-modules)
+    - [With Promise Chaining](#with-promise-chaining)
 - [Parameters](#parameters)
-	- [json](#json)
-	- [tab](#tab)
-	- [codesLineLength](#codesLineLength)
+    - [json](#json)
+    - [tab](#tab)
+    - [codesLineLength](#codesLineLength)
 - [MIT License](#mit-license)
 
 -------------------------------------------------------
@@ -68,9 +68,9 @@ The only validation JSONSlick performs is the type-enforcement of its [parameter
 No error-checking, for deployment.  
 ```javascript
 const result = 
-	await JSONSlick(
-		json_string
-	)
+    await JSONSlick(
+        json_string
+    )
 ```
 -------------------------------------------------------
 
@@ -84,16 +84,16 @@ Once you have verified that your code is passing the correct parameters to JSONS
 ```javascript
 let result;
 try {
-	result = await JSONSlick(
-		json_string,
-		tab_string,
-		codesLineLength_int
-	)
+    result = await JSONSlick(
+        json_string,
+        tab_string,
+        codesLineLength_int
+    )
 } catch( message ) {
-	console.error( 
-		message.result, //reason for error
-		message.error //error name
-	);
+    console.error( 
+        message.result, //reason for error
+        message.error //error name
+    );
 }
 ```
 -------------------------------------------------------
@@ -107,7 +107,7 @@ const result = await JSONSlick( json_string );
 ```
 
 Be sure your server is configured to serve ".mjs"
-	files with MIME type `"application/javascript"`.
+    files with MIME type `"application/javascript"`.
 
 -------------------------------------------------------
 
@@ -115,22 +115,22 @@ Be sure your server is configured to serve ".mjs"
 
 ```javascript
 JSONSlick(
-	json_string,
-	tab_string,
-	codesLineLength_int
+    json_string,
+    tab_string,
+    codesLineLength_int
 ).then( 
-	formattedJSONString => {
-		console.log(
-			formattedJSONString
-		)
-	} 
+    formattedJSONString => {
+        console.log(
+            formattedJSONString
+        )
+    } 
 ).catch( 
-	errorMessage => {
-		console.error(
-			errorMessage.error,
-			errorMessage.result
-		);
-	} 
+    errorMessage => {
+        console.error(
+            errorMessage.error,
+            errorMessage.result
+        );
+    } 
 )
 ```
 
@@ -142,7 +142,7 @@ JSONSlick(
 
 `json: string` 
 - If `string` - The JSON string to format.
-	- Note: Library behavior is undefined for malformed JSON.
+    - Note: Library behavior is undefined for malformed JSON.
 - Else - throws `"Type Error"`
 
 Example:
@@ -159,17 +159,17 @@ await JSONSlick( `{"a":1}` );
 
 `tab: unset | string`
 - If `string` - the character used as white-space while formatting.
-	- Note: Any string is valid, including non-JSON white-space and non-white-space.
+    - Note: Any string is valid, including non-JSON white-space and non-white-space.
 - Else If `unset` - defaults to 1 space " " (ASCII code 0x20).
 - Else - throws `"Type Error"`
 
 Example:
 ```javascript
-await JSONSlick( `{"a":1}`, "	" )
+await JSONSlick( `{"a":1}`, "    " )
 ```
 ```json
 {
-	"a": 1,
+    "a": 1,
 }
 ```
 
